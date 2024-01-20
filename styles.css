@@ -62,4 +62,22 @@ main {
 
 .user-container {
   width: 750px;
+  margin: 20px;
+}
+.profilePic {
+  margin-left: 290px;
+  margin-top: -20px;
+  width: 20%;
+
+  border: 2px solid black;
+  border-radius: 100px;
+}
+
+.user-fullName,
+.userName,
+.bio,
+.followers,
+.following {
+  text-align: center;
+  margin-top: 15px;
 }

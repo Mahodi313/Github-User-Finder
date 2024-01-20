@@ -21,10 +21,16 @@ function searchUser(searchValue) {
 function displayUser(user) {
   userContainer.innerHTML = `
         <img class="profilePic" src = "${user.avatar_url}">
+        
         <h3 class = "user-fullName">Name: ${user.name}</h3>
-        <h3 class = "userName">Login Name: ${user.login}</h3>
+        
+        <h3 class = "userName">Username: ${user.login}</h3>
+        
         <p class = "bio">Bio: ${user.bio}</p>
-        <h5>Followers: ${user.followers}</h5>
-        <h5>Following: ${user.following}</h5>
+        
+        <h5 class = "followers">Followers: ${user.followers}</h5>
+        
+        <h5 class = "following">Following: ${user.following}</h5>
+        
     `;
 }
