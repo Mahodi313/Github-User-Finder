@@ -31,24 +31,50 @@ function searchUser(searchValue) {
 
 function displayUser(user) {
   userContainer.innerHTML = `
-        <img class="profilePic" src = "${user.avatar_url}">
-        
-        <h3 class = "user-fullName">Name: ${user.name}</h3>
-        
-        <h3 class = "userName">Username: ${user.login}</h3>
-        
-        <p class = "bio">Bio: ${user.bio}</p>
-        
-        <h5 class = "followers">Followers: ${user.followers}</h5>
-        
-        <h5 class = "following">Following: ${user.following}</h5>
-        
+    <img class="profilePic" src = "${user.avatar_url}"> 
+    <h3 class = "user-fullName">Name: ${user.name}</h3>   
+    <h3 class = "userName">Username: ${user.login}</h3>  
+    <p class = "bio">Bio: ${user.bio}</p>  
+    <h5 class = "followers">Followers: ${user.followers}</h5>  
+    <h5 class = "following">Following: ${user.following}</h5>
     `;
+
+  getUserRepositories(user);
+}
+
+function getUserRepositories(user) {
+  fetch(url + user.login + "/repos")
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("No public repositories found!");
+      }
+      return res.json();
+    })
+    .then((data) => displayUserRepos(data))
+    .catch((error) => {
+      displayErrorMessage("This user doesn't have any public repositories");
+    });
+}
+
+function displayUserRepos(repos) {
+  const repositoriesList = repos
+    .map(
+      (repo) =>
+        `<li class="repositoryItem"><a href="${repo.html_url}">${repo.name}</a></li>`
+    )
+    .join("");
+
+  userContainer.innerHTML += `
+        <ul class="repositoryList">
+        ${repositoriesList}
+        </ul>
+        `;
 }
 
 function displayErrorMessage(message) {
-  userContainer.innerHTML = `<p class="error">${message}</p>`;
+  userContainer.innerHTML += `<p class="error">${message}</p>`;
 }
+
 function clearErrorMessage() {
   userContainer.innerHTML = "";
 }
