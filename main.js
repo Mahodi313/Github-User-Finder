@@ -14,8 +14,19 @@ searchForm.addEventListener("submit", function (e) {
 // METHODS
 function searchUser(searchValue) {
   fetch(url + searchValue)
-    .then((response) => response.json())
-    .then((data) => displayUser(data));
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("User not found!");
+      }
+
+      return response.json();
+    })
+    .then((data) => displayUser(data))
+    .catch((error) => {
+      console.error(error);
+      displayErrorMessage("User not found. Please try again...");
+      setTimeout(clearErrorMessage, 2000);
+    });
 }
 
 function displayUser(user) {
@@ -33,4 +44,11 @@ function displayUser(user) {
         <h5 class = "following">Following: ${user.following}</h5>
         
     `;
+}
+
+function displayErrorMessage(message) {
+  userContainer.innerHTML = `<p class="error">${message}</p>`;
+}
+function clearErrorMessage() {
+  userContainer.innerHTML = "";
 }

@@ -81,3 +81,8 @@ main {
   text-align: center;
   margin-top: 15px;
 }
+
+.error {
+  color: red;
+  text-align: center;
+}
