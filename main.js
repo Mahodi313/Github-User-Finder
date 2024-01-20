@@ -65,6 +65,7 @@ function displayUserRepos(repos) {
     .join("");
 
   userContainer.innerHTML += `
+        <h4>Repositories:</h4>
         <ul class="repositoryList">
         ${repositoriesList}
         </ul>

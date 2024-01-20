@@ -44,24 +44,30 @@ main {
 }
 
 .searchForm {
-  margin-top: 10px;
-  height: 120px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #search_bar {
-  width: 350px;
-  height: 40px;
-  border-radius: 12px;
-  box-shadow: 2px 3px 3px 2px;
-  text-align: start;
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #3498db;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#search_bar:focus {
+  border-color: #2ecc71;
 }
 
 .user-container {
   width: 750px;
   margin: 20px;
+  margin-top: 50px;
 }
 .profilePic {
   margin-left: 290px;
@@ -84,4 +90,44 @@ main {
 .error {
   color: red;
   text-align: center;
+}
+
+/* Repository Section */
+.user-container h4 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.repositoryList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+.repositoryItem {
+  margin-top: 15px;
+  margin-left: 15px;
+  text-wrap: wrap;
+}
+
+.repositoryItem a {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  font-weight: lighter;
+  border: 1px solid #3498db;
+  color: #3498db;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.repositoryItem a:hover {
+  background-color: #3498db;
+  color: #ffffff;
 }
