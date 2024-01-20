@@ -23,9 +23,9 @@ function searchUser(searchValue) {
     })
     .then((data) => displayUser(data))
     .catch((error) => {
-      console.error(error);
+      clearContent();
       displayErrorMessage("User not found. Please try again...");
-      setTimeout(clearErrorMessage, 2000);
+      setTimeout(clearContent, 2000);
     });
 }
 
@@ -76,6 +76,6 @@ function displayErrorMessage(message) {
   userContainer.innerHTML += `<p class="error">${message}</p>`;
 }
 
-function clearErrorMessage() {
+function clearContent() {
   userContainer.innerHTML = "";
 }
